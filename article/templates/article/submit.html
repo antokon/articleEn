@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" type="text/css" href="{% static 'article/app.css' %}">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+          integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous"/>
+
+
+
+    <title>Submit Page</title>
+</head>
+<body>
+<div id="wrapper" class="App">
+    <header class="App-header">
+        <h1 class="App-title">Review your submission</h1>
+    </header>
+    <br><br>
+    <p>Highlight the essentials of your article before submitting!</p>
+
+    <div id="d1" class="d1" ></div>
+
+    <div id="ta" class="ta" >
+        <p></p>
+    </div>
+    <br>
+    <button class="button" id="highlight">Highlight</button>
+    <button class="button" id="clearHighlights">Clear</button>
+    <button id="send" class="button" style="display: none">Send</button>
+    <br><br><br>
+    <div id="table-div" style="width: 380px;margin: auto; height: 500px;  display: none" >
+
+
+    </div>
+
+    <div id="d2" class="d2">
+    </div>
+
+
+
+</div>
+
+</body>
+<script src="{% static "article/jquery-3.3.1.js" %}"></script>
+<script type="text/javascript" src="{% static 'article/index.js' %}"></script>
+<script type="text/javascript" src="{% static 'article/submit.js' %}"></script>
+</html>

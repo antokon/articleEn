@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" type="text/css" href="{% static 'article/app.css' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+          integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous"/>
+
+    <!-- Main TinyMCE library -->
+
+
+
+    <title>Review Page</title>
+</head>
+<body>
+<div id="wrapper" class="App">
+    <header class="App-header">
+        <h1 class="App-title">Review Your Article</h1>
+    </header>
+    <p class="App-intro">
+
+    </p><br>
+    <div id="big" style="align-content: center; margin: auto">
+        <div id="r1">
+            <label><input type="checkbox" name="checkbox" value="Treat people with love and respect. Treat them as you would be treated. It's a hard world out there, don't make it harder" class="cbox">
+                Treat people with love and respect. Treat them as you would be treated. It's a hard world out there, don't make it harder #love #respect</label>
+
+            <label><input type="checkbox" />I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>
+
+            <!--<label><input type="checkbox" name="checkbox" value="I thought the Shazam movie was about a superhero with the power to guess the name of any pop song." class="cbox">-->
+                <!--I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>-->
+
+            <!--<input type="checkbox" id="tweeter" name="feature" value="<p>" onclick="addElement(this);">-->
+
+            <br>
+            <label><input type="checkbox" name="checkbox" value="The Habits Guide: How to Build Good Habits and Break Bad Ones" class="cbox">
+                The Habits Guide: How to Build Good Habits and Break Bad Ones</label>
+
+
+            <br><br>
+        </div>
+        <div id="review" class="review" >
+            <textarea id="textReview" ></textarea>
+
+
+        </div>
+        <br>
+    </div>
+    <div id="r3" style="align-items: end; ">
+        <br><br>
+        <button class="button" id="b-submit" >Export it</button>
+        <br><br>
+    </div>
+    <br><br><br>
+</div>
+</div>
+
+</body>
+<script src="{% static 'article/jquery-3.3.1.js' %}"></script>
+<script type="text/javascript" src="{% static 'article/review.js' %}" ></script>
+</html>
