@@ -78,6 +78,7 @@ table.myTable {
     position: relative;
     text-align: center;
 
+
 }
 div#c1, #c3 {
     width: 25%;
@@ -124,6 +125,32 @@ div#r3{
     bottom: 0px;
     text-align: center;
 }
+.highlightTable {
+
+    color: #333; /* Lighten up font color */
+    font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-spacing: 0;
+
+}
+td, th {
+    border: 1px dashed seagreen;
+    height: 30px;
+
+} /* Make cells a bit taller */
+
+th {
+    background: #F3F3F3; /* Light grey background */
+    font-weight: bold; /* Make sure they're bold */
+
+}
+
+td {
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: center; /* Center our text */
+}
+
 
 
 

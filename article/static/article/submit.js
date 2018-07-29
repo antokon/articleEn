@@ -1,6 +1,6 @@
 (function () {
     var text;
-    var parentContainerId;
+    //var parentContainerId;
     var Review_PAGE = "/article/review";
 
     text = localStorage.getItem("textStorage");
@@ -53,8 +53,8 @@
 
     function selectText() {
         var range, newNode;
-        parentContainerId = $("#ta");
-           var sel = '';
+        var sel = '';
+        //parentContainerId = $("#ta");
             if (window.getSelection) {
                 sel = window.getSelection();
                 console.log("selection exist", sel);
@@ -86,8 +86,8 @@
                             }
                         }
                         //extracting all of the selected highlighted text
-                        goodTextHtml = '<table id="highlightTable">\n'  ;
-                        goodTextHtml += '<tr> <th> Highlights </th><br><th> No. of Tweets </th><th> No. of Articles </th></tr>';
+                        goodTextHtml = '<table id="highlightTable" style=" width: 400px;">';
+                        goodTextHtml += '<tr> <th class="text-center" > Highlights </th> <th class="text-center"> Tweets </th> <th class="text-center"> Articles </th></tr>';
 
                         $.each($(".selectedText"), function (i, currItem) {
                             if ($(currItem).text() != '') {
@@ -97,8 +97,10 @@
                             $("#table-div").fadeIn();
                             $("#wrapper button").fadeIn();
 
+
                         });
-                        // goodTextHtml +=   '</table>';
+
+                        goodTextHtml +=   '</table>';
                     });
                     //clear the results and set the content back to text and not html
                     $("#clearHighlights").click(function () {
@@ -108,24 +110,7 @@
                         $("#send").hide();
                     });
                     $("#send").click(function () {
-                         // function AddZero(num) {
-                         //     return (num >= 0 && num < 10) ? "0" + num : num + "";
-                         // }
-                         // function datetime() {
-                         //     var now = new Date();
-                         //     var strDateTime = [[AddZero(now.getFullYear()),
-                         //         AddZero(now.getMonth() + 1),
-                         //         now.getDate()].join("/"),
-                         //         [AddZero(now.getHours()),
-                         //             AddZero(now.getMinutes())].join(":"),
-                         //         now.getHo() >= 12 ? "PM" : "AM",
-                         //         now.getSeconds()].join(" ");
-                         //     console.log("Now: " + strDateTime);
-                         //     return strDateTime
-                         // }
-                         //  var datet = datetime();
-
-                         function getTableData() {
+                       function getTableData() {
                              // Array of data we'll return
                              var dataTable = [];
                              // Counter
@@ -136,59 +121,57 @@
                                  var inputs =$(tr).find($("input"));
 
                                  if (tds.length > 1) {
-                                     dataTable[ind++] = "Highlight: " + tds[0].textContent + " " + "Tweets:" + inputs[0].value + " " + "References:" + inputs[1].value;
+                                     dataTable[ind++] = "Highlight: " + tds[0].textContent + ", " + "Tweets:" + inputs[0].value + ", " + "References:" + inputs[1].value + "; ";
                                  }
                              });
                              console.log(dataTable);
                              return dataTable;
 
-                         }
-                        getTableData();
-                        function csrfSafeMethod(method) {
+                       }
+                       getTableData();
+
+                       function csrfSafeMethod(method) {
                             // these HTTP methods do not require CSRF protection
                             return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-                        }
+                       }
 
-                        $.ajaxSetup({
-                            crossDomain: false, // obviates need for sameOrigin test
-                            beforeSend: function(xhr, settings) {
-                                if (!csrfSafeMethod(settings.type)) {
-                                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                                }
-                            }
+                       $.ajaxSetup({
+                           crossDomain: false, // obviates need for sameOrigin test
+                           beforeSend: function(xhr, settings) {
+                               if (!csrfSafeMethod(settings.type)) {
+                                   xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                               }
+                           }
+                       });
+
+                       $.ajax({
+                           type: 'POST',
+                           dataType: 'json',
+                           contentType: 'application/json; charset=utf-8',
+                           url: '/article/create_article/',
+                           data: JSON.stringify ({
+
+                               'article': text,
+                               'highlight': getTableData()
+                           }),
+                           success: function (json) {
+                               console.log(json);
+                               //console.log(text);
+                               console.log(getTableData());
+                           },
+                           failure: function(data){
+                           console.log("failure");
+                           console.log(data);
+                           }
                         });
-
-                        $.ajax({
-                            type: 'POST',
-                            dataType: 'json',
-                            contentType: 'application/json; charset=utf-8',
-                            url: '/article/create_article/',
-                            data: JSON.stringify ({
-
-                                'article': text,
-                                'highlight': getTableData()
-                            }),
-                            success: function (json) {
-                                console.log(json);
-                                //console.log(text);
-                                console.log(getTableData());
-                            },
-                            failure: function(data){
-                            console.log("failure");
-                            console.log(data);
-                            }
-
-                        });
-                        window.location.href = Review_PAGE;
+                       window.location.href = Review_PAGE;
                     });
                 }
             }
-
     }
 
     $(function () {
           selectText();
-
        // clickedSelectedText();
        // getselected();
     });

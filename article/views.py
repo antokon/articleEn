@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import sqlite3
+import re
 import datetime
 from django.utils import timezone
 import json
@@ -24,9 +24,16 @@ def create_article(request):
         data = request.body
 
         dtc = json.loads(request.body.decode('utf-8'))
+        for item in dtc['highlight']:
+            a = item.replace("\['", '"')
+            print(a)
+        # a = [item.replace("\['", '"') for item in dtc]
+        # for key in dtc.items():
+        #     dtc[key] = dtc[key].replace('\[', '')
+        #     # dtc[key] = re.sub('[^A-Za-z0-9:, ]+', '', dtc[key])
 
         art = dtc['article']
-        highl = dtc['highlight']
+        highl = a
         pub_date = timezone.now()
         print(art)
         # art = request.body['article']

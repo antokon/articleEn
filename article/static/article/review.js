@@ -1,33 +1,43 @@
 (function(){
-var text;
 
-// <label><input type="checkbox" name="checkbox" value="value">Text</label>
-
+    var text;
 
     function ShowText(){
         text = localStorage.getItem("textStorage");
         $("#textReview").html(text);
     }
 
-
-
     $('#r1 input').change(function() {
-        // var re;
-        var existing = $("#textReview").val();
-       // $("input:checked")[0].nextSibling.nodeValue;
         if (this.checked) {
         console.log("checked");
         console.log(this.value);
-            $("#textReview").val(existing + " " + this.value);
+        var existing = $("#textReview").val();
+        var cursorPos = $("#textReview").prop('selectionStart');
+        var textBefore = existing.substring(0,  cursorPos );
+        var textAfter  = existing.substring( cursorPos, existing.length );
+
+            $("#textReview").val(textBefore + " " + this.value + " " + textAfter);
         } else {
             console.log("unchecked");
-            var input = this.value;
-          // $("#textReview").replace(this.value, " ");
-            //existing.val().replace( this.value,  "");
+
             $( '#textReview' ).val( $('#textReview').val().replace( this.value,  " " ) );
             console.log($("#textReview"));
              console.log(this.value);
         }
+    });
+
+    $("#b-export").click(function (){
+        var text = $("#textReview").val().trim();
+        text = text.replace(/\n/g, "\r\n");
+        var blob = new Blob([text], { type: "text/plain"});
+        var anchor = document.createElement("a");
+        anchor.download = "my-filename.txt";
+        anchor.href = window.URL.createObjectURL(blob);
+        anchor.target ="_blank";
+        anchor.style.display = "none"; // just to be safe!
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
     });
          // var sel = '';
          // var range, newNode;
@@ -66,19 +76,9 @@ var text;
              //     console.log("surrounds");
        //      // }
 
-
-
-
     $(function () {
-
         ShowText();
         //showData();
-
-
     });
-
-
-
-
 
 })();
