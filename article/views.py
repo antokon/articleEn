@@ -24,18 +24,29 @@ def create_article(request):
         data = request.body
 
         dtc = json.loads(request.body.decode('utf-8'))
-        for item in dtc['highlight']:
-            a = item.replace("\['", '"')
-            print(a)
+        # result = {"article": dtc['article'], "highlight": dtc['highlight']}
+        # print(print(json.dumps(result, sort_keys=True, indent=4)))
+        # for key in dtc.items():
+        #     dtc[key] = dtc['key'].replace("\['", '"')
+        # b = [x for x in a if x not in "[]"]
+            # print(a)
         # a = [item.replace("\['", '"') for item in dtc]
         # for key in dtc.items():
         #     dtc[key] = dtc[key].replace('\[', '')
         #     # dtc[key] = re.sub('[^A-Za-z0-9:, ]+', '', dtc[key])
 
+        # for items in dtc['highlight']:
+        #     a = items.replace("\['", '"')
+        # b = [x for x in dtc['highlight'] if x not in ['[', ']']]
+
+        a = dtc['highlight']
+        b = " \n".join(map(str, a))
+        print(b)
         art = dtc['article']
-        highl = a
+        highl = b
         pub_date = timezone.now()
-        print(art)
+        # print(art)
+        # print(dtc[key])
         # art = request.body['article']
         # highl = request.body['highlight']
         # date = request.body['pub_date']

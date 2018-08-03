@@ -119,12 +119,12 @@
                              $('#highlightTable tr').each(function (index, tr) {
                                  var tds = $(tr).find('td');
                                  var inputs =$(tr).find($("input"));
-
-                                 if (tds.length > 1) {
-                                     dataTable[ind++] = "Highlight: " + tds[0].textContent + ", " + "Tweets:" + inputs[0].value + ", " + "References:" + inputs[1].value + "; ";
+                                 if (tds.length > 1 ){
+                                         dataTable[ind++] = "Highlight " + [ind] + ": " + tds[0].textContent.trim() + ", " + "Tweets: " + inputs[0].value + ", " + "References: " + inputs[1].value +";";
                                  }
+
                              });
-                             console.log(dataTable);
+                           //  console.log(dataTable);
                              return dataTable;
 
                        }
@@ -155,13 +155,13 @@
                                'highlight': getTableData()
                            }),
                            success: function (json) {
-                               console.log(json);
-                               //console.log(text);
-                               console.log(getTableData());
+                               //console.log(json);
+                               console.log("success");
+                      //         console.log(getTableData());
                            },
                            failure: function(data){
                            console.log("failure");
-                           console.log(data);
+                           //console.log(data);
                            }
                         });
                        window.location.href = Review_PAGE;
