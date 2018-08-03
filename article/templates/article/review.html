@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#000000">
@@ -18,6 +18,7 @@
 
     <title>Review Page</title>
 </head>
+
 <body>
 <div id="wrapper" class="App">
     <header class="App-header">
@@ -26,21 +27,37 @@
     <p class="App-intro">
 
     </p><br>
-    <div id="big" style="align-content: center; margin: auto">
-        <div id="r1">
-            <label><input type="checkbox" name="checkbox" value="Treat people with love and respect. Treat them as you would be treated. It's a hard world out there, don't make it harder" class="cbox">
-                Treat people with love and respect. Treat them as you would be treated. It's a hard world out there, don't make it harder #love #respect</label>
+    <div id="big" style="height:500px;align-content: center; margin: auto">
+        <div id="r1" >
 
-            <label><input type="checkbox" name="checkbox" value="I thought the Shazam movie was about a superhero with the power to guess the name of any pop song."/>I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>
+            <blockquote id="twitter1" class="twitter-tweet"> <p id="1" lang="en" dir="ltr">Treat people with love and respect. Treat them as you would be treated. It&#39;s a hard world out there, don&#39;t make it harder
+                <a href="https://twitter.com/hashtag/love?src=hash&amp;ref_src=twsrc%5Etfw">#love</a> <a href="https://twitter.com/hashtag/respect?src=hash&amp;ref_src=twsrc%5Etfw">#respect</a></p>
+                &mdash; Tweeter (@tweeter) <a href="https://twitter.com/tweeter/status/606304741723770882?ref_src=twsrc%5Etfw">June 4, 2015</a></blockquote>
+            <script  async src="https://platform.twitter.com/widgets.js"   charset="utf-8"  ></script>
+            <!--<input type="checkbox" name="checkbox" value="tweet 1">-->
+            <!--<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We’re launching a new bottom navigation bar on Twitter for Android. With this update, you’ll be able to quickly navigate between all of your tabs with ease!</p>&mdash; Twitter Support (@TwitterSupport) <a href="https://twitter.com/TwitterSupport/status/1017530159098822656?ref_src=twsrc%5Etfw">July 12, 2018</a></blockquote>-->
+            <!--<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
 
-            <!--<label><input type="checkbox" name="checkbox" value="I thought the Shazam movie was about a superhero with the power to guess the name of any pop song." class="cbox">-->
-                <!--I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>-->
 
-            <!--<input type="checkbox" id="tweeter" name="feature" value="<p>" onclick="addElement(this);">-->
+            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Stay safe. Love one another. Life is hard for everyone, so spread peace and happiness.
+                <a href="https://twitter.com/hashtag/tweetlove?src=hash&amp;ref_src=twsrc%5Etfw">#tweetlove</a></p>&mdash; Tweeter (@tweeter)
+                <a href="https://twitter.com/tweeter/status/489879052157595649?ref_src=twsrc%5Etfw">July 17, 2014</a>
+            </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <!--<input type="checkbox" name="checkbox" value="tweet 2">-->
 
-            <br>
-            <label><input type="checkbox" name="checkbox" value="The Habits Guide: How to Build Good Habits and Break Bad Ones" class="cbox">
-                The Habits Guide: How to Build Good Habits and Break Bad Ones</label>
+            <!--<label><input type="checkbox" name="checkbox" value="Treat people with love and respect. Treat them as you would be treated. It's a hard world out there, don't make it harder" class="cbox">-->
+                <!--Treat people with love and respect. Treat them as you would be treated. It's a hard world out there, don't make it harder #love #respect</label>-->
+
+            <!--<label><input type="checkbox" name="checkbox" value="I thought the Shazam movie was about a superhero with the power to guess the name of any pop song."/>I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>-->
+
+            <!--&lt;!&ndash;<label><input type="checkbox" name="checkbox" value="I thought the Shazam movie was about a superhero with the power to guess the name of any pop song." class="cbox">&ndash;&gt;-->
+                <!--&lt;!&ndash;I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<input type="checkbox" id="tweeter" name="feature" value="<p>" onclick="addElement(this);">&ndash;&gt;-->
+
+            <!--<br>-->
+            <!--<label><input type="checkbox" name="checkbox" value="The Habits Guide: How to Build Good Habits and Break Bad Ones" class="cbox">-->
+                <!--The Habits Guide: How to Build Good Habits and Break Bad Ones</label>-->
 
 
             <br><br>
@@ -51,12 +68,21 @@
 
         </div>
         <br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <button class="button" id="b-preview">Preview </button>
+        <button class="button" id="b-export" >Export it</button>
     </div>
     <div id="r3" style="align-items: end; ">
-        <br><br>
-        <br><br>
-        <br><br>
-        <button class="button" id="b-export" >Export it</button>
+
+
         <br><br>
     </div>
     <br><br><br>
@@ -66,4 +92,7 @@
 </body>
 <script src="{% static 'article/jquery-3.3.1.js' %}"></script>
 <script type="text/javascript" src="{% static 'article/review.js' %}" ></script>
+<script type="text/javascript" src="{% static 'article/preview.js' %}" ></script>
+
+
 </html>

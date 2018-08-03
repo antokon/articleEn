@@ -20,13 +20,14 @@ class Articles(models.Model):
 
 
 
-# class Highlights(models.Model):
-#     article = models.ForeignKey(Articles, on_delete=models.CASCADE)
+# class Tweets(models.Model):
+#     article = Articles.ForeignKey()
+#     tweets = models.TextField()
 #
 #     objects = models.Manager()
 #
 #     def __str__(self):
-#         return "Highlight: %s, No of Tweets: %s, No of Refences: %s" % (self.highlight, self.tweets, self.references)
+#         return "Tweet: %s" % (self.tweets)
 
     # def article_details(self):
     #     return "%s %s %s" % (self.highlight, self.tweets, self.references)

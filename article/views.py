@@ -19,6 +19,10 @@ def submit(request):
     return render(request, 'article/submit.html')
 
 
+def preview(request):
+    return render(request, 'article/preview.html')
+
+
 def create_article(request):
     if request.method == 'POST':
         data = request.body

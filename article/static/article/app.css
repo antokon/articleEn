@@ -95,6 +95,7 @@ div#r1{
     right:100%;
     text-align: center;
     font-size: 15px;
+    overflow: scroll;
 
 
 }
@@ -151,6 +152,23 @@ td {
     text-align: center; /* Center our text */
 }
 
+pre {
+    white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
+    white-space: -o-pre-wrap; /* Opera */
+    white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+    word-wrap: break-word; /* IE 5.5+ */
+}
 
-
-
+button#send{
+    margin:auto;
+    display:block;
+}
+div#preview{
+    min-height: 350px;
+    width: 800px;
+    padding: 9px;
+    margin: auto;
+    boxSizing: border-box;
+    fontSize: 15px;
+    text-align: left;
+}

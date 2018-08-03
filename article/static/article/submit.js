@@ -6,7 +6,7 @@
     text = localStorage.getItem("textStorage");
     $(document).ready(function loadText() {
          text = localStorage.getItem("textStorage");
-        $("#ta p").html(localStorage.getItem("textStorage"));
+        $("#ta pre").html(localStorage.getItem("textStorage"));
     });
 
     function getCookie(name) {
@@ -96,6 +96,7 @@
                             $("#table-div").html(goodTextHtml);
                             $("#table-div").fadeIn();
                             $("#wrapper button").fadeIn();
+                            $("#guideline").fadeIn();
 
 
                         });
@@ -110,62 +111,67 @@
                         $("#send").hide();
                     });
                     $("#send").click(function () {
-                       function getTableData() {
-                             // Array of data we'll return
-                             var dataTable = [];
-                             // Counter
-                             var ind = 0;
-                             // Cycle through each of the table body's rows
-                             $('#highlightTable tr').each(function (index, tr) {
-                                 var tds = $(tr).find('td');
-                                 var inputs =$(tr).find($("input"));
-                                 if (tds.length > 1 ){
-                                         dataTable[ind++] = "Highlight " + [ind] + ": " + tds[0].textContent.trim() + ", " + "Tweets: " + inputs[0].value + ", " + "References: " + inputs[1].value +";";
-                                 }
+                        if (confirm("You are sending this article with the highlight to the crowdsourcing workers! Press OK in order to continue or cancel to make changes.")) {
 
-                             });
-                           //  console.log(dataTable);
-                             return dataTable;
+                            function getTableData() {
+                                // Array of data we'll return
+                                var dataTable = [];
+                                // Counter
+                                var ind = 0;
+                                // Cycle through each of the table body's rows
+                                $('#highlightTable tr').each(function (index, tr) {
+                                    var tds = $(tr).find('td');
+                                    var inputs = $(tr).find($("input"));
+                                    if (tds.length > 1) {
+                                        dataTable[ind++] = "Highlight " + [ind] + ": " + tds[0].textContent.trim() + ", " + "Tweets: " + inputs[0].value + ", " + "References: " + inputs[1].value + ";";
+                                    }
 
-                       }
-                       getTableData();
+                                });
+                                //  console.log(dataTable);
+                                return dataTable;
 
-                       function csrfSafeMethod(method) {
-                            // these HTTP methods do not require CSRF protection
-                            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-                       }
+                            }
 
-                       $.ajaxSetup({
-                           crossDomain: false, // obviates need for sameOrigin test
-                           beforeSend: function(xhr, settings) {
-                               if (!csrfSafeMethod(settings.type)) {
-                                   xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                               }
-                           }
-                       });
+                            getTableData();
 
-                       $.ajax({
-                           type: 'POST',
-                           dataType: 'json',
-                           contentType: 'application/json; charset=utf-8',
-                           url: '/article/create_article/',
-                           data: JSON.stringify ({
+                            function csrfSafeMethod(method) {
+                                // these HTTP methods do not require CSRF protection
+                                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                            }
 
-                               'article': text,
-                               'highlight': getTableData()
-                           }),
-                           success: function (json) {
-                               //console.log(json);
-                               console.log("success");
-                      //         console.log(getTableData());
-                           },
-                           failure: function(data){
-                           console.log("failure");
-                           //console.log(data);
-                           }
-                        });
-                       window.location.href = Review_PAGE;
+                            $.ajaxSetup({
+                                crossDomain: false, // obviates need for sameOrigin test
+                                beforeSend: function (xhr, settings) {
+                                    if (!csrfSafeMethod(settings.type)) {
+                                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                                    }
+                                }
+                            });
+
+                            $.ajax({
+                                type: 'POST',
+                                dataType: 'json',
+                                contentType: 'application/json; charset=utf-8',
+                                url: '/article/create_article/',
+                                data: JSON.stringify({
+
+                                    'article': text,
+                                    'highlight': getTableData()
+                                }),
+                                success: function (json) {
+                                    console.log(json);
+                                    console.log("success");
+                                    //         console.log(getTableData());
+                                },
+                                failure: function (data) {
+                                    console.log("failure");
+                                    //console.log(data);
+                                }
+                            });
+                            window.location.href = Review_PAGE;
+                        }else{}
                     });
+
                 }
             }
     }
