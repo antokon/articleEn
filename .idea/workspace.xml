@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cd573a2-3552-4bca-9791-2ec38717ab53" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/articleEn.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/article/static/article/preview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/article/templates/article/preview.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commgit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jshint.jshintrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vim.exe.stackdump" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/static/article/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/article/static/article/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/static/article/review.js" beforeDir="false" afterPath="$PROJECT_DIR$/article/static/article/review.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/static/article/submit.js" beforeDir="false" afterPath="$PROJECT_DIR$/article/static/article/submit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/templates/article/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/article/templates/article/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/templates/article/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/article/templates/article/review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/templates/article/submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/article/templates/article/submit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commgit.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
