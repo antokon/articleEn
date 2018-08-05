@@ -81,6 +81,7 @@
                                 //range.text = "<span class='selectedText'>" + newNode + "</span>";
                                 //range.insertNode(newNode);
                                 console.log(newNode);
+                                window.getSelection().removeAllRanges();
                             }catch (err) {
                                 alert("already highlighted");
                             }
@@ -109,6 +110,7 @@
                         hLCont.text(hLCont.text());
                         $("#table-div").hide();
                         $("#send").hide();
+                        $("#guideline").hide();
                     });
                     $("#send").click(function () {
                         if (confirm("You are sending this article with the highlight to the crowdsourcing workers! Press OK in order to continue or cancel to make changes.")) {

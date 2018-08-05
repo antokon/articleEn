@@ -48,9 +48,9 @@
                 label.htmlFor = checkbox.id;
                 label.appendChild(document.createTextNode(checkbox.value));
                 console.log(label);
-                var br = document.createElement('br');
+
                 checkboxes.append(checkbox);
-                checkboxes.append(label+br);
+                checkboxes.append(label);
 
            }
 
@@ -63,11 +63,11 @@
                 var textBefore = existing.substring(0,  cursorPos );
                 var textAfter  = existing.substring( cursorPos, existing.length );
 
-                $("#textReview").val(textBefore + " " + this.value + " " + textAfter);
+                $("#textReview").val(textBefore + " [" + this.value + "] " + textAfter);
             } else {
                 console.log("unchecked");
 
-                $( '#textReview' ).val( $('#textReview').val().replace( this.value,  " " ) );
+                $( '#textReview' ).val( $('#textReview').val().replace( " ["+this.value+"] ",  " " ) );
                 console.log($("#textReview"));
                 console.log(this.value);
             }
