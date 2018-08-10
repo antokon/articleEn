@@ -4,11 +4,19 @@
     var Preview_PAGE = "/article/preview";
     var ptext1;
     var lengtht = tweetsarray().length;
+    $(document).ready(function loadText(textH) {
+        console.log(textH);
+        var h1 = localStorage.getItem("h1");
+        var h2 = localStorage.getItem("h2");
+        $("#highlight1 p").append("Supporting tweet for highlight: "+h1);
+        $("#highlight2 p").append("Supporting tweet for highlight: "+h2);
 
+    });
     function ShowText(){
         text = localStorage.getItem("textStorage");
         $("#textReview").html(text);
         //console.log($("#twitter1").text());
+
 
     }
 
@@ -32,7 +40,8 @@
     function checkbox() {
          // $("#r1 [id*=twitter]").each(function () {
             //  $("#checkboxes").appendChild(checkbox);
-            var checkboxes = $("#r1");
+
+            var checkboxes = $("#tweets");
             for (var i = 0; i <lengtht ; i++) {
                // console.log(tweets.length);
                // var checkboxes = $("#r1");
@@ -53,6 +62,7 @@
                 checkboxes.append(label);
 
            }
+
 
         $('#r1 input').change(function() {
             if (this.checked) {

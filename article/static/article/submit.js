@@ -2,6 +2,9 @@
     var text;
     //var parentContainerId;
     var Review_PAGE = "/article/review";
+    var h1;
+
+
 
     text = localStorage.getItem("textStorage");
     $(document).ready(function loadText() {
@@ -51,6 +54,12 @@
     //     });
     // }
 
+
+
+
+
+
+
     function selectText() {
         var range, newNode;
         var sel = '';
@@ -92,7 +101,7 @@
 
                         $.each($(".selectedText"), function (i, currItem) {
                             if ($(currItem).text() != '') {
-                                goodTextHtml += "<tr> <td>" + $(currItem).text() + "</td><td><input id='nrTweets' type=\"text\" size=\"1\"/></td><td><input id='nrArticles' type=\"text\" size=\"3\"/></td></tr>";
+                                goodTextHtml += "<tr> <td>" + $(currItem).text() + "</td><td><input id='nrTweets' type=\"text\" size=\"1\" class='numbers'/></td><td><input id='nrArticles' type=\"text\" size=\"1\" class='numbers'/></td></tr>";
                             }
                             $("#table-div").html(goodTextHtml);
                             $("#table-div").fadeIn();
@@ -103,6 +112,11 @@
                         });
 
                         goodTextHtml +=   '</table>';
+
+                        $('.numbers').keypress(function(key) {
+                            if(key.charCode < 48 || key.charCode > 57)
+                                return false;
+                        })
                     });
                     //clear the results and set the content back to text and not html
                     $("#clearHighlights").click(function () {
@@ -125,11 +139,16 @@
                                     var tds = $(tr).find('td');
                                     var inputs = $(tr).find($("input"));
                                     if (tds.length > 1) {
-                                        dataTable[ind++] = "Highlight " + [ind] + ": " + tds[0].textContent.trim() + ", " + "Tweets: " + inputs[0].value + ", " + "References: " + inputs[1].value + ";";
-                                    }
+                                        if ($(tr).find($("input"))[0].value == "" || $(tr).find($("input"))[1].value == "" ) {
+                                            return false;
+                                        } else {
+                                            dataTable[ind++] = "Highlight " + [ind] + ": " + tds[0].textContent.trim() + ", " + "Tweets: " + inputs[0].value + ", " + "References: " + inputs[1].value + ";";
 
+                                        }
+                                    }
                                 });
-                                //  console.log(dataTable);
+                                 console.log(dataTable.length);
+                                console.log(dataTable);
                                 return dataTable;
 
                             }
@@ -149,37 +168,60 @@
                                     }
                                 }
                             });
+                            if(getTableData().length == 0){
+                                alert("Empty Fields! Please insert the desired numbers of tweets and articles respectively and try again");
+                                return false;
+                            }else {
+                                $.ajax({
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    contentType: 'application/json; charset=utf-8',
+                                    url: '/article/create_article/',
+                                    data: JSON.stringify({
 
-                            $.ajax({
-                                type: 'POST',
-                                dataType: 'json',
-                                contentType: 'application/json; charset=utf-8',
-                                url: '/article/create_article/',
-                                data: JSON.stringify({
+                                        'article': text,
+                                        'highlight': getTableData()
+                                    }),
+                                    success: function (json) {
+                                        console.log(json);
+                                        console.log("success");
+                                        //         console.log(getTableData());
+                                    },
+                                    failure: function (data) {
+                                        console.log("failure");
+                                        //console.log(data);
+                                    }
+                                });
+                            }
 
-                                    'article': text,
-                                    'highlight': getTableData()
-                                }),
-                                success: function (json) {
-                                    console.log(json);
-                                    console.log("success");
-                                    //         console.log(getTableData());
-                                },
-                                failure: function (data) {
-                                    console.log("failure");
-                                    //console.log(data);
-                                }
+                            var textH = [];
+                            var ind = 0;
+                            $.each($(".selectedText"), function (i, currItem) {
+                            // console.log("enters");
+                            textH[ind++] = $(currItem).text();
+                                  //  console.log(textH);
                             });
-                            window.location.href = Review_PAGE;
+                            console.log("returns");
+                            // console.log(textH);
+                            localStorage.setItem("h1",textH[0]);
+                            localStorage.setItem("h2",textH[1]);
+                            h1=textH[0];
+                            console.log(h1);
+                            //h2=textH[1];
+
+                          //  console.log(highlightsArray());
+
+                          window.location.href = Review_PAGE;
                         }else{}
                     });
 
                 }
             }
     }
-
+    //$("#send").onclick(highlightsArray());
     $(function () {
           selectText();
+        // highlightsArray();
        // clickedSelectedText();
        // getselected();
     });

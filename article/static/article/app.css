@@ -104,7 +104,7 @@ textarea#textReview{
     /*width: 650px;*/
     float: left;
     margin: auto;
-    width: 44%;
+    width: 48%;
     border-width: 2px;
     border-color: #0077aa;
     border-style: dotted;
@@ -171,4 +171,7 @@ div#preview{
     boxSizing: border-box;
     fontSize: 15px;
     text-align: left;
+}
+input[type=number]{
+    width: 50px;
 }

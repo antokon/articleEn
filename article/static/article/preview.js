@@ -3,9 +3,11 @@
     // var text;
     // var Preview_PAGE = "/article/preview";
     var rText= localStorage.getItem("text");
+
     function loadText() {
-      $("#preview").html(rText);
+      $("#preview pre").html(rText);
       var d = $('#preview');
+
 
      // for (var i = 0; i < ("tweet"+[i+1]); i++) {
           d.html(d.html().replace("[tweet 1]", "<blockquote id=\"twitter1\" class=\"twitter-tweet\"> <p id=\"1\" lang=\"en\" dir=\"ltr\">Treat people with love and respect. Treat them as you would be treated. It&#39;s a hard world out there, don&#39;t make it harder\n" +
@@ -19,21 +21,43 @@
      // }
     }
 
-    $("#wrapper").on("click","#b-save", function() {
-            // var a = document.body.appendChild(
-            //     document.createElement("a")
-            // );
-            // a.download = "export.html";
-            // a.href = "data:text/html," + document.getElementById("wrapper");
-            // a.click();
 
-            var a = document.body.appendChild(
-                document.createElement("a")
-            );
-            a.download = "preview.html";
-            a.href = "data:text/text;charset=UTF-8," + encodeURIComponent(document.body.outerHTML);// document.getElementsByTagName('html').innerHTML; //encodeURIComponent(document.documentElement.outerHTML);
-            a.click();
+
+
+        $('#b-save').click(function () {
+            var html = $('#preview').html();
+            uriContent = "data:application/octet-stream," + encodeURIComponent( html );
+            window.open(uriContent, 'preview.html');
         });
+
+
+
+        //
+        // var a = document.body.appendChild(
+        //         document.createElement("a")
+        //     );
+        //
+        // var querysel = document.querySelector("#wrapper");
+        //
+        // setTimeout(function () {
+        //     a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(document.getElementsByTagName('html')[0].outerHTML);// document.getElementsByTagName('html').innerHTML; //encodeURIComponent(document.documentElement.outerHTML);
+        // }, 1000);
+        //
+        //     setTimeout(function () {
+        //         a.download = "preview.html";
+        //     }, 2000);
+
+
+
+
+
+
+
+        //     setTimeout(function () {
+        //         a.click();
+        //     }, 3000);
+        //
+        // });
 
 
 
