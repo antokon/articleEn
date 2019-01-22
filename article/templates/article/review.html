@@ -30,14 +30,22 @@
 
         <br>
         <div id="r1" >
-
+            <!-- Formatting isn't done yet. Not sure which way is the best way to insert the tweets to the template -->
             <div id="tweets">
              <h4 style="font-weight: bold;">Tweets References supporting your statements: </h4><br>
+             {% for tweet in tweets %}
+                <div id="highlight1">
+                <p></p>
+                {{ tweet|safe }}
 
-             <div id="highlight1">
-                    <p></p>
-             </div>
+                </div>
+                <div id="highlight2">
+                <p></p>
+                <!--{{ tweet|safe }}-->
+                </div>
+             {% endfor %}
 
+             <!-- TWEET LINK1
             <blockquote id="twitter1" class="twitter-tweet"> <p id="1" lang="en" dir="ltr">Treat people with love and respect. Treat them as you would be treated. It&#39;s a hard world out there, don&#39;t make it harder
                 <a href="https://twitter.com/hashtag/love?src=hash&amp;ref_src=twsrc%5Etfw">#love</a> <a href="https://twitter.com/hashtag/respect?src=hash&amp;ref_src=twsrc%5Etfw">#respect</a></p>
                 &mdash; Tweeter (@tweeter) <a href="https://twitter.com/tweeter/status/606304741723770882?ref_src=twsrc%5Etfw">June 4, 2015</a></blockquote>
@@ -46,6 +54,7 @@
             <!--<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We’re launching a new bottom navigation bar on Twitter for Android. With this update, you’ll be able to quickly navigate between all of your tabs with ease!</p>&mdash; Twitter Support (@TwitterSupport) <a href="https://twitter.com/TwitterSupport/status/1017530159098822656?ref_src=twsrc%5Etfw">July 12, 2018</a></blockquote>-->
             <!--<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
 
+            <!-- TWEET LINK 2
                 <div id="highlight2">
                     <p></p>
                 </div>

@@ -5,6 +5,7 @@ from django.utils import timezone
 import json
 from django.http import HttpResponse, Http404
 from .models import Articles
+from .models import Tweet
 
 
 def index(request):
@@ -12,7 +13,9 @@ def index(request):
 
 
 def review(request):
-    return render(request, 'article/review.html')
+    tweets=Tweet.objects.all()
+    context = {'tweets': tweets}
+    return render(request, 'article/review.html', context)
 
 
 def submit(request):
