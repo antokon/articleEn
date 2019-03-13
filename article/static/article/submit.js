@@ -63,6 +63,8 @@
 		function selectText() {
 				var range, newNode;
 				var sel = '';
+				// Flag to check invalid inputs
+				var isFalse=0;
 				//parentContainerId = $("#ta");
 						if (window.getSelection) {
 								sel = window.getSelection();
@@ -132,32 +134,34 @@
 														function getTableData() {
 																// Array of data we'll return
 																var dataTable = [];
-																// Counter
+																// Counters
 																var ind = 0;
+																var idx=0;
 																// Cycle through each of the table body's rows
 																$('#highlightTable tr').each(function (index, tr) {
 																		var tds = $(tr).find('td');
 																		var inputs = $(tr).find($("input"));
+
+																		//console.log("index: " + index);
+																		idx++;
 																		if (tds.length > 1) {
-																				if ($(tr).find($("input"))[0].value == ""
-																				|| $(tr).find($("input"))[1].value == ""
-																				|| parseInt($(tr).find($("input"))[1].value) > 10
-																				|| parseInt($(tr).find($("input"))[0].value) > 3 ) {
+																				if ($(tr).find($("input"))[0].value == ""	|| $(tr).find($("input"))[1].value == "" // || parseInt($(tr).find($("input"))[1].value) > 10	|| parseInt($(tr).find($("input"))[0].value) > 3 ) {
+																					|| parseInt(inputs[0].value) > 3 || parseInt(inputs[1].value) > 10) {
+																						isFalse = 1;
+																						//console.log("Changed false to 1 inside the first if. isfalse now: " + isFalse);
 																						return false;
 																				} else {
+																						// Puts the highlight and the amount of references to datatable
 																						dataTable[ind++] = "Highlight " + [ind] + ": " + tds[0].textContent.trim() + ", " + "Tweets: " + inputs[0].value + ", " + "References: " + inputs[1].value + ";";
-
-
 																				}
 																		}
-																});
-																console.log(dataTable.length);
+																}); // Loop ends
+
+																console.log("Datatable length: " + dataTable.length);
 																console.log(dataTable);
 																return dataTable;
 
 														}
-
-														getTableData();
 
 														function csrfSafeMethod(method) {
 																// these HTTP methods do not require CSRF protection
@@ -172,10 +176,18 @@
 																		}
 																}
 														});
+														//console.log("isFalse before the checks: " + isFalse);
 														if(getTableData().length == 0){
-																alert("Error! Empty fields or amount of tweets or references over limitations. Please try again");
+																alert("Error! Empty table. Please try again");
+																isFalse=0;
+																//console.log("1: Changed isFalse to 0. isFalse now: " + isFalse);
 																return false;
-														}else {
+														} else if (isFalse) {
+															alert("Error! Empty fields or amount of tweets or references over limitations. Please try again");
+															isFalse=0;
+															//console.log("2: Changed isFalse to 0. ifFalse now: " + isFalse);
+															return false;
+														} else {
 																$.ajax({
 																		type: 'POST',
 																		dataType: 'json',
