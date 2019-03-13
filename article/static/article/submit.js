@@ -178,15 +178,15 @@
 														});
 														//console.log("isFalse before the checks: " + isFalse);
 														if(getTableData().length == 0){
-																alert("Error! Empty table. Please try again");
+																alert("Error! Empty fields or amount of tweets or references over limitations. Please try again");
 																isFalse=0;
 																//console.log("1: Changed isFalse to 0. isFalse now: " + isFalse);
 																return false;
 														} else if (isFalse) {
-															alert("Error! Empty fields or amount of tweets or references over limitations. Please try again");
-															isFalse=0;
-															//console.log("2: Changed isFalse to 0. ifFalse now: " + isFalse);
-															return false;
+																alert("Error! Empty fields or amount of tweets or references over limitations. Please try again");
+																isFalse=0;
+																//console.log("2: Changed isFalse to 0. ifFalse now: " + isFalse);
+																return false;
 														} else {
 																$.ajax({
 																		type: 'POST',
