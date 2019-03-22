@@ -221,6 +221,7 @@
 														// console.log(textH);
 														localStorage.setItem("h1",textH[0]);
 														localStorage.setItem("h2",textH[1]);
+														localStorage.setItem("h3",textH[2]);
 														h1=textH[0];
 														console.log(h1);
 														//h2=textH[1];

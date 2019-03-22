@@ -33,7 +33,7 @@
             <!-- Formatting isn't done yet. Not sure which way is the best way to insert the tweets to the template -->
             <div id="tweets">
              <h4 style="font-weight: bold;">Tweets References supporting your statements: </h4><br>
-             {% for tweet in tweets %}
+             <!--{% for tweet in tweets %}
                 <div id="highlight1">
                 <p></p>
                 {{ tweet|safe }}
@@ -41,9 +41,27 @@
                 </div>
                 <div id="highlight2">
                 <p></p>
-                <!--{{ tweet|safe }}-->
-                </div>
-             {% endfor %}
+                {{ tweet|safe }}
+              </div>
+             {% endfor %}-->
+           <div id="highlight1">
+             <p></p>
+             {% if tweets %}{{tweets.0|safe}}{% endif %}
+             {% if tweets %}{{tweets.1|safe}}{% endif %}
+
+           </div>
+           <div id="highlight2">
+             <p></p>
+             {% if tweets %}{{tweets.2|safe}}{% endif %}
+             {% if tweets %}{{tweets.3|safe}}{% endif %}
+           </div>
+           <div id="highlight3">
+             <p></p>
+             {% if tweets %}{{tweets.4|safe}}{% endif %}
+           </div>
+
+
+
 
              <!-- TWEET LINK1
             <blockquote id="twitter1" class="twitter-tweet"> <p id="1" lang="en" dir="ltr">Treat people with love and respect. Treat them as you would be treated. It&#39;s a hard world out there, don&#39;t make it harder
@@ -67,10 +85,18 @@
             <br><br>
             <div id="ref">
                 <h4 style="font-weight: bold;">Article References supporting your statements: </h4><br>
-                <label><input type="checkbox" name="checkbox" value="https://www.nytimes.com/2015/08/16/technology/inside-amazon-wrestling-big-ideas-in-a-bruising-workplace.html" class="cbox">
-                "Inside Amazon: Wrestling Big Ideas in a Bruising Workplace" </label>
-                <label><input type="checkbox" name="checkbox" value="https://www.wsj.com/articles/amazon-prime-has-more-than-100-million-members-1524088630" class="cbox">
-                    "Amazon Prime Has More Than 100 Million Members" </label>
+
+                <label><input type="checkbox" name="checkbox" value="https://www.uni-landau.de/umwelt/study/content/files/archiv/H.Schulz/WS09/Biodiversitaet_und_Naturschutz/Root%20et%20al%202003.pdf" class="cbox">
+                    "Biodiversitaet und Naturschutz" </label>
+                <label><input type="checkbox" name="checkbox" value="https://link.springer.com/content/pdf/10.1007%2Fs10712-011-9119-1.pdf" class="cbox">
+                        "Sea-Level Rise from the Late 19th to the Early21st Century" </label>
+                <label><input type="checkbox" name="checkbox" value="http://eebweb.arizona.edu/courses/Ecol206/Walther%20et%20al%20Nature%202002.pdf" class="cbox">
+                        "Ecological responses to recent climate change" </label>
+                <label><input type="checkbox" name="checkbox" value="http://arctic.eas.ualberta.ca/downloads/Blaisetal_Ambio2001.pdf" class="cbox">
+                        "Melting Graciers_ A major Source of Persistent Organochlorines to Subalpine Bow Lake in Banff National Park, Canada" </label>
+                <label><input type="checkbox" name="checkbox" value="http://science.sciencemag.org/content/sci/313/5792/1396.full.pdf " class="cbox">
+                        "How Does Climate Change Affect Biodiversity"</label>
+
             </div>
             <!--<label><input type="checkbox" name="checkbox" value="I thought the Shazam movie was about a superhero with the power to guess the name of any pop song."/>I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>-->
 
