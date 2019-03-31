@@ -18,7 +18,14 @@ class Articles(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
+#Creates model (database table for tweets)
 
+class Tweet(models.Model):
+
+    tweet_link = models.TextField()
+    def __str__(self):
+        return self.tweet_link
+        
 
 # class Tweets(models.Model):
 #     article = Articles.ForeignKey()
@@ -33,4 +40,3 @@ class Articles(models.Model):
     #     return "%s %s %s" % (self.highlight, self.tweets, self.references)
     #     # return self.highlight + " " + "Number of Tweets" + self.tweets.value_to_string \
     #     #         + " " + "Number of References" + self.references.value_to_string
-

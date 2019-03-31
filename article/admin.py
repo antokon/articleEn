@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import include, path
 from .models import Articles
+from .models import Tweet
+
 
 urlpatterns = [
     path('article/', include('article.urls')),
@@ -8,4 +10,4 @@ urlpatterns = [
 ]
 
 admin.site.register(Articles)
-
+admin.site.register(Tweet)

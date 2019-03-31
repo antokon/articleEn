@@ -28,6 +28,17 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+# https://aws-portal.amazon.com/gp/aws/developer/account/index.html?ie=UTF8&action=access-key
+AWS_ACCESS_KEY_ID = 'AKIAJIX3IZJSPNJXWGIQ'
+AWS_SECRET_ACCESS_KEY = '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'
+# TODO: Swap comments on next two lines for production
+AWS_HOST = 'mechanicalturk.sandbox.amazonaws.com'
+# AWS_HOST = 'mechanicalturk.amazonaws.com'
+# TODO: Update with your externally accessible URL ROOT
+URL_ROOT = 'http://localhost:8080'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
 ]
 
 MIDDLEWARE = [

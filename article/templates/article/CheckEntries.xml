@@ -1,0 +1,64 @@
+<!-- You must include this JavaScript file -->
+
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+  <HTMLContent><![CDATA[
+<!DOCTYPE html>
+{% load static %}
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<script type="text/javascript">  function add(){
+          //var i = 2;
+          var inpt = document.createElement("crowd-input");
+            inpt.setAttribute("type", "text");
+            inpt.setAttribute("value", "");
+            inpt.setAttribute("name", "Highlight ");
+           // inpt.setAttribute("style", "width:200px");
+
+            var high = document.getElementById("highl");
+
+            high.appendChild(inpt);
+            }</script>
+
+
+<crowd-form answer-format="flatten-objects">
+
+    <div>
+    <strong>Instructions: </strong>
+<span>Find and deliver reviewed content(tweets, article references) based on the statements provided, and the number for each</span>
+                                                                                                                         <div>
+ <!--  <div> <p><strong>Link to the Website:</strong></p>
+
+Your website URLs will be substituted for the ${url} variable when you publish
+a batch with an input file containing multiple website URLs
+<a href="${url}" target="_blank">${url}</a>
+
+    </div>-->
+
+    <div>
+    <p><strong>Article (for context)</strong></p>
+<p>Article:</p><br> ${article}
+</div>
+
+<div>
+<p><strong>Highlights:</strong></p>${name}
+</div>
+
+<div id="highl">
+    <p><strong>For each Highlight return the Highlight and respective tweets and/or references in a new row</strong></p>
+
+<crowd-input name="highlight 1" type="text" required></crowd-input><br>
+<input type="button" name="AddRow" value="Add Row" onclick="add();" />
+    <br>
+    </div>
+
+
+
+
+    </div>
+    </div>
+    </div>
+    </crowd-form>
+      ]]>
+  </HTMLContent>
+  <FrameHeight>450</FrameHeight>
+</HTMLQuestion>

@@ -3,8 +3,13 @@ import re
 import datetime
 from django.utils import timezone
 import json
+
 from django.http import HttpResponse, Http404
 from .models import Articles
+from .models import Tweet
+
+import boto3
+from articleEn.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_HOST
 
 
 def index(request):
@@ -12,7 +17,9 @@ def index(request):
 
 
 def review(request):
-    return render(request, 'article/review.html')
+    tweets=Tweet.objects.all()
+    context = {'tweets': tweets}
+    return render(request, 'article/review.html', context)
 
 
 def submit(request):
@@ -45,7 +52,7 @@ def create_article(request):
 
         a = dtc['highlight']
         b = " \n".join(map(str, a))
-        print(b)
+        #print(b)
         art = dtc['article']
         highl = b
         pub_date = timezone.now()
@@ -64,9 +71,16 @@ def create_article(request):
         response_data['highlight'] = a.highlight
         response_data['pub_date'] = str(a.pub_date)
 
+       # print(a)
+
         return HttpResponse(json.dumps(response_data), content_type="application/json")
     else:
         raise Http404
+
+
+
+
+
 
 # class Connection(object):
 #     """
