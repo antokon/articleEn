@@ -26,92 +26,44 @@
     </header>
     <h4 style="font-weight: bold;">Choose the tweets or references that you want to add by clicking where you want to add them in the text
         and then check the respective checkboxes</h4><br>
-    <div id="big" style="height:500px;align-content: center; margin: auto">
+    <div id="big" style="height:400px;align-content: center; margin: auto;">
 
         <br>
         <div id="r1" >
-            <!-- Formatting isn't done yet. Not sure which way is the best way to insert the tweets to the template -->
             <div id="tweets">
-             <h4 style="font-weight: bold;">Tweets References supporting your statements: </h4><br>
-             {% for tweet in tweets %}
+               <h4 style="font-weight: bold;">References supporting your statements: </h4><br>
+
                 <div id="highlight1">
-                <p></p>
-                {{ tweet|safe }}
-
-                </div>
-                <div id="highlight2">
-                <p></p>
-                <!--{{ tweet|safe }}-->
-                </div>
-             {% endfor %}
-
-             <!-- TWEET LINK1
-            <blockquote id="twitter1" class="twitter-tweet"> <p id="1" lang="en" dir="ltr">Treat people with love and respect. Treat them as you would be treated. It&#39;s a hard world out there, don&#39;t make it harder
-                <a href="https://twitter.com/hashtag/love?src=hash&amp;ref_src=twsrc%5Etfw">#love</a> <a href="https://twitter.com/hashtag/respect?src=hash&amp;ref_src=twsrc%5Etfw">#respect</a></p>
-                &mdash; Tweeter (@tweeter) <a href="https://twitter.com/tweeter/status/606304741723770882?ref_src=twsrc%5Etfw">June 4, 2015</a></blockquote>
-            <script  async src="https://platform.twitter.com/widgets.js"   charset="utf-8"  ></script>
-            <!--<input type="checkbox" name="checkbox" value="tweet 1">-->
-            <!--<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We’re launching a new bottom navigation bar on Twitter for Android. With this update, you’ll be able to quickly navigate between all of your tabs with ease!</p>&mdash; Twitter Support (@TwitterSupport) <a href="https://twitter.com/TwitterSupport/status/1017530159098822656?ref_src=twsrc%5Etfw">July 12, 2018</a></blockquote>-->
-            <!--<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
-
-            <!-- TWEET LINK 2
-                <div id="highlight2">
+                    {% for answers in answers %}
+                        <p>{{ answers.result | safe }}</p>
+                        <label>Reference {{ forloop.counter }} </label> <input type="checkbox" name="checkbox" value="{{ answers.result }}">
                     <p></p>
+                    {% empty %}
+                        <p>No results yet</p>
+                    {% endfor %}
                 </div>
-            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Stay safe. Love one another. Life is hard for everyone, so spread peace and happiness.
-                <a href="https://twitter.com/hashtag/tweetlove?src=hash&amp;ref_src=twsrc%5Etfw">#tweetlove</a></p>&mdash; Tweeter (@tweeter)
-                <a href="https://twitter.com/tweeter/status/489879052157595649?ref_src=twsrc%5Etfw">July 17, 2014</a>
-            </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <!--<input type="checkbox" name="checkbox" value="tweet 2">-->
+
             </div>
-            <br><br>
-            <div id="ref">
-                <h4 style="font-weight: bold;">Article References supporting your statements: </h4><br>
-                <label><input type="checkbox" name="checkbox" value="https://www.nytimes.com/2015/08/16/technology/inside-amazon-wrestling-big-ideas-in-a-bruising-workplace.html" class="cbox">
-                "Inside Amazon: Wrestling Big Ideas in a Bruising Workplace" </label>
-                <label><input type="checkbox" name="checkbox" value="https://www.wsj.com/articles/amazon-prime-has-more-than-100-million-members-1524088630" class="cbox">
-                    "Amazon Prime Has More Than 100 Million Members" </label>
-            </div>
-            <!--<label><input type="checkbox" name="checkbox" value="I thought the Shazam movie was about a superhero with the power to guess the name of any pop song."/>I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>-->
-
-            <!--&lt;!&ndash;<label><input type="checkbox" name="checkbox" value="I thought the Shazam movie was about a superhero with the power to guess the name of any pop song." class="cbox">&ndash;&gt;-->
-                <!--&lt;!&ndash;I thought the Shazam movie was about a superhero with the power to guess the name of any pop song.</label>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;<input type="checkbox" id="tweeter" name="feature" value="<p>" onclick="addElement(this);">&ndash;&gt;-->
-
-            <!--<br>-->
-            <!--<label><input type="checkbox" name="checkbox" value="The Habits Guide: How to Build Good Habits and Break Bad Ones" class="cbox">-->
-                <!--The Habits Guide: How to Build Good Habits and Break Bad Ones</label>-->
-
-
-            <br><br>
         </div>
+
         <div id="review" class="review" >
             <textarea id="textReview" ></textarea>
 
+                    <br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+            <button class="button" id="b-preview" title="See how your article looks with the added content">Preview </button>
+            </div>
 
-        </div>
-        <br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <button class="button" id="b-preview" title="See how your article looks with the added content">Preview </button>
-        <!--<button class="button" id="b-export" >Export it</button>-->
+
     </div>
-    <div id="r3" style="align-items: end; ">
-
-
-        <br><br>
-    </div>
-    <br><br><br>
+    <div id="r3" style="align-items: end; ">        <br><br> </div>
 </div>
-</div>
+
 
 </body>
 <script src="{% static 'article/jquery-3.3.1.js' %}"></script>

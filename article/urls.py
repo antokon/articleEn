@@ -11,6 +11,7 @@ urlpatterns = [
     path('preview/', views.preview, name='preview'),
     path('create_article/', views.create_article, name='create_article'),
     path('conn_mturk/', utils.conn_mturk, name='conn_mturk')
+   # path('check_res/', views.check_res, name='check_res')
 
     # path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     # path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),

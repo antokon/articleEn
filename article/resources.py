@@ -3,7 +3,7 @@ from tastypie import serializers
 from django.core.serializers import json
 from tastypie.authorization import Authorization
 from tastypie.resources import ModelResource
-from article.models import Articles
+from article.models import Articles, Hits
 import json
 from django.http import HttpResponse
 
@@ -20,6 +20,17 @@ class ArticlesResource(ModelResource):
         }
         authorization = Authorization()
 
+
+class HitsResource(ModelResource):
+    class Meta:
+        queryset = Hits.objects.all()
+        resource_name = 'hits'
+        fields = ['id', 'hitID', 'pub_date']
+        filtering = {
+            'article': ['icontains'],
+            'pub_date': ['icontains']
+        }
+        authorization = Authorization()
 
 # class HighlightsResource(ModelResource):
 #

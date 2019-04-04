@@ -8,8 +8,8 @@
         console.log(textH);
         var h1 = localStorage.getItem("h1");
         var h2 = localStorage.getItem("h2");
-        $("#highlight1 p").append("Supporting tweet for highlight: "+h1);
-        $("#highlight2 p").append("Supporting tweet for highlight: "+h2);
+       // $("#highlight1 p").append("Supporting tweet for highlight: "+h1);
+       // $("#highlight2 p").append("Supporting tweet for highlight: "+h2);
 
     });
     function ShowText(){
@@ -37,33 +37,35 @@
     console.log(tweetsarray().length);
 
 
-    function checkbox() {
+   function checkbox() {
          // $("#r1 [id*=twitter]").each(function () {
             //  $("#checkboxes").appendChild(checkbox);
+            var element = $("#tweets").children('div').length;
 
+//            creating a checkbox for each new Tweet in the div
             var checkboxes = $("#tweets");
-            for (var i = 0; i <lengtht ; i++) {
-               // console.log(tweets.length);
-               // var checkboxes = $("#r1");
-                var checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.name = 'checkbox';
-                checkbox.className='cbox';
-                checkbox.id = "checkbox " + [i+1];
-                checkbox.value = 'tweet ' + [i+1];
-                console.log(checkbox);
+//            for (var i = 0; i <element ; i++) {
+//               // console.log(tweets.length);
+//               // var checkboxes = $("#r1");
+//                var checkbox = document.createElement('input');
+//                checkbox.type = 'checkbox';
+//                checkbox.name = 'checkbox';
+//                checkbox.className='cbox';
+//                checkbox.id = "checkbox " + [i+1];
+//                checkbox.value = 'tweet ' + [i+1];
+//                console.log(checkbox);
+//
+//                var label = document.createElement('label');
+//                label.htmlFor = checkbox.id;
+//                label.appendChild(document.createTextNode(checkbox.value));
+//                console.log(label);
+//
+//                checkboxes.append(checkbox);
+//                checkboxes.append(label);
+//
+//           }
 
-                var label = document.createElement('label');
-                label.htmlFor = checkbox.id;
-                label.appendChild(document.createTextNode(checkbox.value));
-                console.log(label);
-
-                checkboxes.append(checkbox);
-                checkboxes.append(label);
-
-           }
-
-
+            // grabbing the selection inside the textarea and inputing the value of the clicked checkbox there
         $('#r1 input').change(function() {
             if (this.checked) {
                 console.log("checked");
@@ -73,18 +75,20 @@
                 var textBefore = existing.substring(0,  cursorPos );
                 var textAfter  = existing.substring( cursorPos, existing.length );
 
-                $("#textReview").val(textBefore + " [" + this.value + "] " + textAfter);
+                $("#textReview").val(textBefore + " " + this.value + " " + textAfter);
             } else {
                 console.log("unchecked");
 
-                $( '#textReview' ).val( $('#textReview').val().replace( " ["+this.value+"] ",  " " ) );
+                $( '#textReview' ).val( $('#textReview').val().replace( " "+this.value+" ",  " " ) );
                 console.log($("#textReview"));
                 console.log(this.value);
             }
         });
 
        // });
-    }        // console.log(chebox());
+   }
+       // console.log(chebox());
+
 
             // $("#r1 twitterwidget").each(function (){
             //     $("#checkboxes").appendChild(checkbox);
@@ -167,8 +171,17 @@
     $(function () {
         ShowText();
         tweetsarray();
-        checkbox();
+        //checkbox();
+        jQuery(document).ready(checkContainer);
 
+        function checkContainer () {
+        var element = $("#highlight1").children().length;
+          if(element > 3){ //if the container is visible on the page
+            checkbox();  //Adds a grid to the html
+          } else {
+            setTimeout(checkContainer, 5000); //wait 50 ms, then try again
+          }
+        }
         //showData();
     });
 

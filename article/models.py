@@ -20,23 +20,41 @@ class Articles(models.Model):
 
 #Creates model (database table for tweets)
 
+
 class Tweet(models.Model):
 
     tweet_link = models.TextField()
+    pub_date = models.DateTimeField('date published')
+
+
     def __str__(self):
         return self.tweet_link
-        
 
-# class Tweets(models.Model):
-#     article = Articles.ForeignKey()
-#     tweets = models.TextField()
-#
-#     objects = models.Manager()
-#
-#     def __str__(self):
-#         return "Tweet: %s" % (self.tweets)
 
-    # def article_details(self):
-    #     return "%s %s %s" % (self.highlight, self.tweets, self.references)
-    #     # return self.highlight + " " + "Number of Tweets" + self.tweets.value_to_string \
-    #     #         + " " + "Number of References" + self.references.value_to_string
+
+class Hits(models.Model):
+    hitID = models.TextField()
+    pub_date = models.DateTimeField('date published')
+
+    objects = models.Manager()
+
+    def __str__(self):
+        return "hit ID: %s" % self.hitID
+
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+
+
+class Answer(models.Model):
+    result = models.TextField()
+    pub_date = models.DateTimeField('date published')
+    article = models.ForeignKey(Articles, on_delete=models.CASCADE)
+    objects = models.Manager()
+
+    def __str__(self):
+        return "Response is %s" % self.result
+
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now

@@ -6,10 +6,10 @@ import json
 
 from django.http import HttpResponse, Http404
 from .models import Articles
-from .models import Tweet
+from .models import Tweet, Hits, Answer
 
 import boto3
-from articleEn.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_HOST
+from articleEn.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 
 def index(request):
@@ -17,9 +17,18 @@ def index(request):
 
 
 def review(request):
-    tweets=Tweet.objects.all()
-    context = {'tweets': tweets}
+    # tweets = Tweet.objects.all()
+    # context = {'tweets': tweets}
+    # return render(request, 'article/review.html', context)
+    a = Articles.objects.latest('pub_date')
+    answers = Answer.objects.filter(article_id=a.id)
+   # for answers in Answer.objects.filter(article_id=a.id):
+    context = {'answers': answers}
+    print(answers)
     return render(request, 'article/review.html', context)
+    #else:
+     #   answer = "There are no References yet. Please Wait a few minutes and refresh the page."
+      #  return HttpResponse(answer)
 
 
 def submit(request):
@@ -28,6 +37,10 @@ def submit(request):
 
 def preview(request):
     return render(request, 'article/preview.html')
+
+
+# def check_res(request):
+#     return HttpResponse(request, 'article/get_results.py')
 
 
 def create_article(request):
@@ -40,7 +53,7 @@ def create_article(request):
         # for key in dtc.items():
         #     dtc[key] = dtc['key'].replace("\['", '"')
         # b = [x for x in a if x not in "[]"]
-            # print(a)
+        # print(a)
         # a = [item.replace("\['", '"') for item in dtc]
         # for key in dtc.items():
         #     dtc[key] = dtc[key].replace('\[', '')
@@ -52,7 +65,7 @@ def create_article(request):
 
         a = dtc['highlight']
         b = " \n".join(map(str, a))
-        #print(b)
+        # print(b)
         art = dtc['article']
         highl = b
         pub_date = timezone.now()
@@ -71,16 +84,16 @@ def create_article(request):
         response_data['highlight'] = a.highlight
         response_data['pub_date'] = str(a.pub_date)
 
-       # print(a)
+        # print(a)
 
         return HttpResponse(json.dumps(response_data), content_type="application/json")
     else:
         raise Http404
 
 
-
-
-
+def create_hit(request):
+    hit_instance = Hits.objects.create(name='test')
+    return render(request, 'some_name.html.html')
 
 # class Connection(object):
 #     """

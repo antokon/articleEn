@@ -85,9 +85,9 @@ div#c1, #c3 {
     margin: auto;
 }
 div#r1{
-    min-height: 300px;
+    min-height: 400px;
     min-width: 300px;
-    width: 50%;
+    width: 48%;
     float: left;
     box-sizing: border-box;
     border-width: 1px;
@@ -96,15 +96,22 @@ div#r1{
     text-align: center;
     font-size: 15px;
     overflow: scroll;
+}
+div#review{
+    min-height: 500px;
 
-
+    width: 50%;
+    float: right;
+    right:100%;
+    text-align: center;
+    font-size: 15px;
 }
 textarea#textReview{
-    min-height: 300px;
+    min-height: 400px;
     /*width: 650px;*/
-    float: left;
+
     margin: auto;
-    width: 48%;
+    width: 88%;
     border-width: 2px;
     border-color: #0077aa;
     border-style: dotted;
