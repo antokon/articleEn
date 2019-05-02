@@ -1,0 +1,59 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<script type="text/javascript">
+    let i =1;
+    function add(){
+            i++;
+            var inpt = document.createElement("crowd-input");
+            inpt.type = "text";
+            inpt.name = "Highlight " + i;
+            inpt.style = "height:50px";
+
+            var high = document.getElementById("highl");
+            var br = document.createElement("br");
+            high.appendChild(inpt);
+            high.appendChild(br)
+            }</script>
+
+
+<crowd-form answer-format="flatten-objects">
+
+    <div>
+    <strong>Instructions: </strong>
+<span>Find and deliver reviewed content (tweets, article references) based on the statements and the number provided for each</span>
+<div>
+
+
+    <div>
+    <p><strong>Article (for context)</strong></p>
+<p>Article:</p><br> ${article}
+</div>
+
+<div>
+<p><strong>Highlights:</strong></p>${name}
+</div>
+
+<div id="highl">
+    <p><strong>For each sentece under Highlight, search for tweets under https://twitter.com/search-home and return the respective embed tweet link,
+    for references you can use https://google.com or https://scholar.google.com.
+    (The picture below shows where to find embed link for a tweet.)
+    <blockquote class="imgur-embed-pub" lang="en" data-id="a/VWNmazQ"><a href="//imgur.com/VWNmazQ"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script></strong></p>
+    <p>Every tweet or reference link should be submit in a new row!</p>
+<crowd-input name="highlight 1" type="text" required> value="text"</crowd-input><br>
+
+
+    </div>
+    <div>
+        <button type="button"name="AddRow" onclick="add();">Add Row</button>
+        <br>
+        <br>
+    </div>
+
+
+
+
+    </div>
+    </div>
+    </div>
+    </crowd-form>
