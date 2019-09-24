@@ -5,13 +5,17 @@ A semi-automated web application that utilizes crowdsourcing services, specifica
 
 ## Prerequisites
 -Python
+
 -Django
+
 *Amazon secret keys need to be declared. (e.g. in settings.py)
 
 
 ### Running
-To start a the application use
+To start the application use
 py manage.py runserver
+
+Admin credentials on Django are the default ones 
 
 ### Built With
 Django - The web framework used
