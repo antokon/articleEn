@@ -12,10 +12,13 @@ A semi-automated web application that utilizes crowdsourcing services, specifica
 
 
 ### Running
-To start the application use
-py manage.py runserver
+To start the application use:
+* *py manage.py runserver*
 
 Admin credentials on Django are the default ones 
 
 ### Built With
-Django - The web framework used
+* [Django](https://docs.djangoproject.com/en/2.2/) - The web framework used
+
+
+### This project was a contribution for my master's thesis
