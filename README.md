@@ -21,4 +21,6 @@ Admin credentials on Django are the default ones
 * [Django](https://docs.djangoproject.com/en/2.2/) - The web framework used
 
 
+
+
 *This project was a contribution to my master's thesis.*
